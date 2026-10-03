@@ -1,0 +1,1388 @@
+<style>
+/* ==========================================================
+   VINFAST EBUS — ABOUT US
+   Every selector is scoped to #vf-ebus-scope
+   and every class is prefixed "vfe-" to avoid clashes with the theme.
+   Mobile-first, desktop layout from 1024px.
+   ========================================================== */
+
+#vf-ebus-scope *,
+#vf-ebus-scope *::before,
+#vf-ebus-scope *::after {
+  box-sizing: border-box;
+}
+#vf-ebus-scope {
+  margin: 0;
+  font-family: "Mulish", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  color: #3c3c3c;
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+#vf-ebus-scope h1,
+#vf-ebus-scope h2,
+#vf-ebus-scope h3,
+#vf-ebus-scope h4,
+#vf-ebus-scope p,
+#vf-ebus-scope ul,
+#vf-ebus-scope ol,
+#vf-ebus-scope dl,
+#vf-ebus-scope dd,
+#vf-ebus-scope figure {
+  margin: 0;
+}
+#vf-ebus-scope ul,
+#vf-ebus-scope ol {
+  padding: 0;
+  list-style: none;
+}
+#vf-ebus-scope img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+/* <picture> only switches sources; let the <img> size against the real parent */
+#vf-ebus-scope picture {
+  display: contents;
+}
+#vf-ebus-scope a {
+  color: inherit;
+  text-decoration: none;
+}
+#vf-ebus-scope button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+#vf-ebus-scope :focus-visible {
+  outline: 2px solid #1464f4;
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  #vf-ebus-scope *,
+  #vf-ebus-scope *::before,
+  #vf-ebus-scope *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
+/* ---------- CMS guard ----------
+   Everything lives under #vf-ebus-scope so theme / Bootstrap rules can't leak in,
+   and these styles can't leak out. Neutralise the theme's element styles
+   (font, size, colour, margins) so the cut renders like the static build. */
+#vf-ebus-scope {
+  letter-spacing: normal;
+  text-align: start;
+}
+#vf-ebus-scope :is(h1, h2, h3, h4, h5, h6, p, li, dt, dd, figcaption, blockquote, a, span, strong, small, label, button, input, select, textarea) {
+  font-family: inherit;
+  letter-spacing: inherit;
+  text-transform: none;
+}
+#vf-ebus-scope :is(h1, h2, h3, h4, h5, h6) {
+  line-height: inherit;
+  color: inherit;
+  font-weight: 700;
+}
+#vf-ebus-scope h1 { font-size: 2em; }
+#vf-ebus-scope h2 { font-size: 1.5em; }
+#vf-ebus-scope h3 { font-size: 1.17em; }
+#vf-ebus-scope h4 { font-size: 1em; }
+#vf-ebus-scope :is(p, li, dt, dd, figcaption, span, label) {
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+#vf-ebus-scope :is(sup, sub) {
+  position: static;
+  font-size: smaller;
+  line-height: inherit;
+}
+#vf-ebus-scope sup { vertical-align: super; }
+#vf-ebus-scope sub { vertical-align: sub; }
+#vf-ebus-scope a:hover {
+  text-decoration: none;
+}
+#vf-ebus-scope button:focus:not(:focus-visible) {
+  outline: 0;
+}
+
+/* Page gutters. From 1440px up they stay at the Figma paddings (185 / 75 / 155px) */
+/* so content grows with the screen like the auto-layout frame; past 1920px the */
+/* content stops growing and the gutters take the rest. */
+#vf-ebus-scope {
+  --pad: 16px;
+  --pad-wide: 16px;
+  --pad-specs: 16px;
+}
+@media (min-width: 768px) {
+  #vf-ebus-scope {
+    --pad: 40px;
+    --pad-wide: 40px;
+    --pad-specs: 40px;
+  }
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope {
+    --pad: max(min(max(40px, 50vw - 535px), 185px), 50vw - 775px);
+    --pad-wide: max(min(max(40px, 50vw - 645px), 75px), 50vw - 885px);
+    --pad-specs: max(min(max(40px, 50vw - 565px), 155px), 50vw - 805px);
+  }
+}
+/* Containers */
+#vf-ebus-scope .vfe-container,
+#vf-ebus-scope .vfe-container-wide {
+  width: calc(100% - 2 * var(--pad));
+  margin-inline: auto;
+}
+#vf-ebus-scope .vfe-container-wide {
+  width: calc(100% - 2 * var(--pad-wide));
+}
+/* Headings */
+#vf-ebus-scope .vfe-heading-2 {
+  font-size: 32px;
+  line-height: 38.4px;
+  font-weight: 600;
+  color: #3c3c3c;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-heading-2 {
+    font-size: 40px;
+    line-height: 48px;
+    font-weight: 600;
+  }
+}
+#vf-ebus-scope .vfe-heading-3 {
+  font-size: 28px;
+  line-height: 33.6px;
+  font-weight: 600;
+  color: #3c3c3c;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-heading-3 {
+    font-size: 32px;
+    line-height: 38.4px;
+    font-weight: 600;
+  }
+}
+#vf-ebus-scope .vfe-heading-1 {
+  font-size: 36px;
+  line-height: 43.2px;
+  font-weight: 600;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-heading-1 {
+    font-size: 48px;
+    line-height: 57.6px;
+    font-weight: 600;
+  }
+}
+#vf-ebus-scope .vfe-heading--black {
+  color: #000;
+}
+#vf-ebus-scope .vfe-text-body {
+  color: rgba(60, 60, 60, 0.9);
+}
+#vf-ebus-scope .vfe-section-title {
+  margin-bottom: 24px;
+  text-align: center;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-section-title {
+    margin-bottom: 30px;
+  }
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-u-mobile-only {
+    display: none;
+  }
+}
+/* Mono-color icons/logos rendered via CSS mask so they follow `color`. */
+/* The mask URL is set per class (not through a custom property) — Firefox can */
+/* fail to repaint masks whose url() comes from a var(). */
+/* Icons are embedded as data URIs, so pages also work when opened via file://. */
+#vf-ebus-scope .vfe-icon {
+  display: inline-block;
+  flex-shrink: 0;
+  background-color: currentColor;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+#vf-ebus-scope .vfe-icon {
+  width: 24px;
+  height: 24px;
+}
+#vf-ebus-scope .vfe-icon--arrow-left {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M21 12.0002C21 12.3789 20.7003 12.6859 20.3306 12.6859L3.66942 12.6859C3.29971 12.6859 3 12.3789 3 12.0002C3 11.6215 3.29971 11.3145 3.66942 11.3145L20.3306 11.3145C20.7003 11.3145 21 11.6215 21 12.0002Z' fill='%233C3C3C'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M11.2824 4.20084C11.5439 4.46863 11.5439 4.9028 11.2824 5.17059L4.6153 12L11.2824 18.8294C11.5439 19.0972 11.5439 19.5314 11.2824 19.7992C11.021 20.0669 10.5972 20.0669 10.3357 19.7992L3.19525 12.4849C2.93382 12.2171 2.93382 11.7829 3.19525 11.5151L10.3357 4.20084C10.5972 3.93305 11.021 3.93305 11.2824 4.20084Z' fill='%233C3C3C'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M21 12.0002C21 12.3789 20.7003 12.6859 20.3306 12.6859L3.66942 12.6859C3.29971 12.6859 3 12.3789 3 12.0002C3 11.6215 3.29971 11.3145 3.66942 11.3145L20.3306 11.3145C20.7003 11.3145 21 11.6215 21 12.0002Z' fill='%233C3C3C'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M11.2824 4.20084C11.5439 4.46863 11.5439 4.9028 11.2824 5.17059L4.6153 12L11.2824 18.8294C11.5439 19.0972 11.5439 19.5314 11.2824 19.7992C11.021 20.0669 10.5972 20.0669 10.3357 19.7992L3.19525 12.4849C2.93382 12.2171 2.93382 11.7829 3.19525 11.5151L10.3357 4.20084C10.5972 3.93305 11.021 3.93305 11.2824 4.20084Z' fill='%233C3C3C'/%3E%3C/svg%3E");
+}
+#vf-ebus-scope .vfe-icon--arrow-right {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M3 11.9998C3 11.6211 3.29971 11.3141 3.66942 11.3141L20.3306 11.3141C20.7003 11.3141 21 11.6211 21 11.9998C21 12.3785 20.7003 12.6855 20.3306 12.6855L3.66942 12.6855C3.29971 12.6855 3 12.3785 3 11.9998Z' fill='%233C3C3C'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M12.7176 19.7992C12.4561 19.5314 12.4561 19.0972 12.7176 18.8294L19.3847 12L12.7176 5.17059C12.4561 4.9028 12.4561 4.46863 12.7176 4.20084C12.979 3.93305 13.4028 3.93305 13.6643 4.20084L20.8048 11.5151C21.0662 11.7829 21.0662 12.2171 20.8048 12.4849L13.6643 19.7992C13.4028 20.0669 12.979 20.0669 12.7176 19.7992Z' fill='%233C3C3C'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M3 11.9998C3 11.6211 3.29971 11.3141 3.66942 11.3141L20.3306 11.3141C20.7003 11.3141 21 11.6211 21 11.9998C21 12.3785 20.7003 12.6855 20.3306 12.6855L3.66942 12.6855C3.29971 12.6855 3 12.3785 3 11.9998Z' fill='%233C3C3C'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M12.7176 19.7992C12.4561 19.5314 12.4561 19.0972 12.7176 18.8294L19.3847 12L12.7176 5.17059C12.4561 4.9028 12.4561 4.46863 12.7176 4.20084C12.979 3.93305 13.4028 3.93305 13.6643 4.20084L20.8048 11.5151C21.0662 11.7829 21.0662 12.2171 20.8048 12.4849L13.6643 19.7992C13.4028 20.0669 12.979 20.0669 12.7176 19.7992Z' fill='%233C3C3C'/%3E%3C/svg%3E");
+}
+/* Round arrow buttons (sliders) */
+#vf-ebus-scope .vfe-arrow-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #3c3c3c;
+  color: #fff;
+  transition: background-color 0.25s ease, opacity 0.25s ease;
+}
+#vf-ebus-scope .vfe-arrow-btn .vfe-icon {
+  width: 16px;
+  height: 16px;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-arrow-btn {
+    width: 48px;
+    height: 48px;
+  }
+  #vf-ebus-scope .vfe-arrow-btn .vfe-icon {
+    width: 24px;
+    height: 24px;
+  }
+}
+#vf-ebus-scope .vfe-arrow-btn:disabled {
+  background: #f0f3f3;
+  cursor: default;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-arrow-btn:disabled {
+    background: rgba(0, 0, 0, 0.2);
+  }
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-arrow-btn--sm {
+    width: 32px;
+    height: 32px;
+  }
+  #vf-ebus-scope .vfe-arrow-btn--sm .vfe-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+#vf-ebus-scope .vfe-arrow-btn--sm:disabled {
+  background: #f0f3f3;
+}
+/* Pagination dots */
+#vf-ebus-scope .vfe-dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+#vf-ebus-scope .vfe-dots__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 100px;
+  background: #d9e1e2;
+  transition: width 0.25s ease, background-color 0.25s ease;
+}
+#vf-ebus-scope .vfe-dots__dot.is-active {
+  width: 24px;
+  background: #1464f4;
+}
+/* prev · dots · next row under mobile carousels */
+#vf-ebus-scope .vfe-slider-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  margin-top: 30px;
+  padding-inline: 16px;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-slider-actions {
+    display: none;
+  }
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-slider-actions--inline {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 0;
+    padding-inline: 0;
+  }
+}
+/* Scroll-snap carousel, controlled by ebus.js ([data-vfe-carousel]) */
+#vf-ebus-scope .vfe-carousel-track {
+  display: flex;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+#vf-ebus-scope .vfe-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+#vf-ebus-scope .vfe-carousel-track > * {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+#vf-ebus-scope .vfe-carousel-track > [hidden] {
+  display: none;
+}
+#vf-ebus-scope .vfe-carousel-track.is-dragging {
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+  cursor: grabbing;
+  user-select: none;
+}
+/* Slides that fade in ([data-vfe-fader]); only the active one takes up space. */
+/* The active slide keeps its own display value (block, flex, …). */
+#vf-ebus-scope .vfe-fade-stack > [data-vfe-fade-slide]:not(.is-active) {
+  display: none;
+}
+#vf-ebus-scope .vfe-fade-stack > [data-vfe-fade-slide].is-active {
+  animation: vfe-fade-in 0.5s ease;
+}
+@keyframes vfe-fade-in {
+  from {
+  opacity: 0;
+  }
+}
+/* Reproduces a Figma image crop (fill "imageTransform") inside a frame. */
+/* Put on the <img>; its parent must be position: relative + overflow: hidden. */
+/* Values come from the transform [[sx, 0, tx], [0, sy, ty]]: */
+/*   --cw: 100% / sx   --ch: 100% / sy   --cx: -tx / sx * 100%   --cy: -ty / sy * 100% */
+/* `*-lg` variants override from the desktop breakpoint. Without values it */
+/* behaves like a centred cover. */
+#vf-ebus-scope .vfe-fig-crop {
+  position: absolute;
+  left: var(--cx, 0);
+  top: var(--cy, 0);
+  width: var(--cw, 100%);
+  max-width: none;
+  height: var(--ch, 100%);
+  object-fit: cover;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-fig-crop {
+    left: var(--cx-lg, var(--cx, 0));
+    top: var(--cy-lg, var(--cy, 0));
+    width: var(--cw-lg, var(--cw, 100%));
+    height: var(--ch-lg, var(--ch, 100%));
+  }
+}
+/* ---------- Hero ---------- */
+#vf-ebus-scope .vfe-about-hero {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 760px;
+  overflow: hidden;
+  color: #fff;
+  background: #000;
+}
+#vf-ebus-scope .vfe-about-hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#vf-ebus-scope .vfe-about-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+}
+#vf-ebus-scope .vfe-about-hero__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding-inline: 16px;
+  text-align: center;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-about-hero__content {
+    gap: 24px;
+  }
+}
+#vf-ebus-scope .vfe-about-hero__link {
+  border-bottom: 2px solid currentColor;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+}
+/* ---------- Intro + timeline ---------- */
+#vf-ebus-scope .vfe-intro {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: 60px;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-intro {
+    padding-block: 120px;
+  }
+}
+#vf-ebus-scope .vfe-intro::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 41.5%;
+  left: -402.4%;
+  width: 904.8%;
+  height: 100%;
+  background: url("https://static-cms-prod.vinfastauto.us/statics/ebus-2026/about-intro-bg.webp") 0 0/100% 100% no-repeat;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-intro::before {
+    top: 29.31%;
+    left: -75.31%;
+    width: 250.6%;
+  }
+}
+#vf-ebus-scope .vfe-intro__head {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: calc(100vw - 2 * var(--pad));
+  margin-inline: auto;
+  text-align: center;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-intro__head {
+    gap: 24px;
+  }
+}
+#vf-ebus-scope .vfe-timeline {
+  margin-top: 16px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+#vf-ebus-scope .vfe-timeline::-webkit-scrollbar {
+  display: none;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-timeline {
+    margin-top: 24px;
+    overflow: visible;
+  }
+}
+@media (max-width: 1023.98px) {
+  #vf-ebus-scope .vfe-timeline {
+    margin-inline: -16px;
+    padding-inline: 16px;
+  }
+}
+#vf-ebus-scope .vfe-timeline__list {
+  position: relative;
+  display: flex;
+  gap: 30px;
+  width: max-content;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-timeline__list {
+    width: auto;
+  }
+}
+#vf-ebus-scope .vfe-timeline__list::before {
+  content: "";
+  position: absolute;
+  top: 49px;
+  left: 150px;
+  right: 150px;
+  height: 2px;
+  background: #84a3b6;
+}
+#vf-ebus-scope .vfe-timeline__item {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-timeline__item {
+    flex: 1 1 0;
+    width: auto;
+  }
+}
+#vf-ebus-scope .vfe-timeline__year {
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 600;
+  color: #1464f4;
+  text-align: center;
+}
+#vf-ebus-scope .vfe-timeline__dot {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  margin: 4px auto 0;
+  border: 2px solid #84a3b6;
+  border-radius: 50%;
+  background: #fff radial-gradient(circle, #1464f4 4px, transparent 4.5px);
+}
+#vf-ebus-scope .vfe-timeline__card {
+  flex: 1;
+  margin-top: -9px;
+  padding: 25px 30px 30px;
+  background: #f7f9f9;
+  border-radius: 16px;
+  color: #3c3c3c;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 129.41 50.1'%3E%3Cpath d='M0 0C5.305 0 10.392 2.107 14.142 5.858L50.563 42.279C58.374 50.089 71.037 50.089 78.848 42.279L115.268 5.858C119.019 2.107 124.106 0 129.41 0Z'/%3E%3C/svg%3E") 50% 0/63px 25px no-repeat, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 129.41 50.1'%3E%3Cpath d='M0 0C5.305 0 10.392 2.107 14.142 5.858L50.563 42.279C58.374 50.089 71.037 50.089 78.848 42.279L115.268 5.858C119.019 2.107 124.106 0 129.41 0Z'/%3E%3C/svg%3E") 50% 0/63px 25px no-repeat exclude, linear-gradient(#000 0 0);
+}
+/* ---------- Story slider (Global EV company …) ---------- */
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-story {
+    width: calc(100% - 2 * var(--pad-wide));
+    margin-inline: auto;
+  }
+}
+#vf-ebus-scope .vfe-story__card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #f7f9f9;
+  border-radius: 20px;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-story__card {
+    display: grid;
+    grid-template-columns: 630fr 660fr;
+    min-height: 640px;
+    border-radius: 40px;
+  }
+}
+#vf-ebus-scope .vfe-story__body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 16px;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-story__body {
+    justify-content: space-between;
+    padding: 96px clamp(40px, 7.6vw, 110px);
+  }
+}
+#vf-ebus-scope .vfe-story__text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-story__text {
+    gap: 24px;
+  }
+}
+#vf-ebus-scope .vfe-story__media {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 20px;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-story__media {
+    aspect-ratio: auto;
+    border-radius: 40px;
+  }
+}
+#vf-ebus-scope .vfe-story__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#vf-ebus-scope .vfe-story .vfe-slider-actions {
+  margin-top: 0;
+  padding-inline: 0;
+}
+/* ---------- VinFast in numbers ---------- */
+#vf-ebus-scope .vfe-numbers {
+  padding-block: 60px 0;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-numbers {
+    padding-top: 96px;
+  }
+}
+#vf-ebus-scope .vfe-numbers .vfe-section-title {
+  margin-bottom: 24px;
+}
+#vf-ebus-scope .vfe-numbers__track {
+  align-items: center;
+  gap: 16px;
+  min-height: 68px;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-numbers__track {
+    justify-content: center;
+    gap: 30px;
+    overflow: visible;
+  }
+}
+#vf-ebus-scope .vfe-numbers__item {
+  text-align: center;
+  color: #000;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-numbers__item {
+    flex: 1 1 0 !important;
+  }
+}
+#vf-ebus-scope .vfe-numbers__item + .vfe-numbers__item {
+  padding-left: 16px;
+  border-left: 2px solid #1464f4;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-numbers__item + .vfe-numbers__item {
+    padding-left: 30px;
+  }
+}
+#vf-ebus-scope .vfe-numbers__item strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 600;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-numbers__item strong {
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: 600;
+  }
+}
+#vf-ebus-scope .vfe-numbers .vfe-slider-actions {
+  margin-top: 24px;
+  padding-inline: 0;
+}
+/* ---------- Did you know? ---------- */
+#vf-ebus-scope .vfe-did-you-know {
+  padding-block: 48px 60px;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-did-you-know {
+    padding-block: 48px 96px;
+  }
+}
+#vf-ebus-scope .vfe-did-you-know__map {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+#vf-ebus-scope .vfe-did-you-know__map img {
+  position: relative;
+  z-index: 1;
+  width: 326px;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-did-you-know__map img {
+    width: 373px;
+  }
+}
+#vf-ebus-scope .vfe-did-you-know__stage {
+  display: block;
+  width: 100%;
+  height: 185px;
+  margin-top: -96px;
+  color: #f7f9f9;
+}
+#vf-ebus-scope .vfe-did-you-know__cols {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+  color: #3c3c3c;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-did-you-know__cols {
+    flex-direction: row;
+    gap: 30px;
+  }
+  #vf-ebus-scope .vfe-did-you-know__cols p {
+    flex: 1 1 0;
+  }
+}
+/* ---------- Text + slanted image rows ---------- */
+#vf-ebus-scope .vfe-split {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+}
+#vf-ebus-scope .vfe-split__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  padding-inline: 16px;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-split__content {
+    gap: 24px;
+    padding: 60px clamp(40px, 8.7vw, 125px) 60px var(--pad-wide);
+  }
+}
+#vf-ebus-scope .vfe-split__text {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+#vf-ebus-scope .vfe-split__media {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  clip-path: polygon(17.6% 0, 100% 0, 100% 100%, 0 100%);
+}
+#vf-ebus-scope .vfe-split--reverse .vfe-split__media {
+  clip-path: polygon(0 0, 100% 0, 82.4% 100%, 0 100%);
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-split--reverse .vfe-split__content {
+    padding: 60px var(--pad-wide) 60px clamp(40px, 8.7vw, 125px);
+  }
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-split + .vfe-split {
+    margin-top: 0;
+  }
+}
+#vf-ebus-scope .vfe-splits {
+  padding-block: 60px;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-splits {
+    padding-block: 0;
+  }
+}
+/* ---------- Partners ---------- */
+#vf-ebus-scope .vfe-partners {
+  padding-block: 60px;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-partners {
+    padding-block: 96px;
+  }
+}
+#vf-ebus-scope .vfe-partners__head {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: center;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-partners__head {
+    gap: 24px;
+  }
+}
+#vf-ebus-scope .vfe-partners__logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-height: 46px;
+  margin-top: 30px;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-partners__logos {
+    gap: 48px;
+  }
+}
+#vf-ebus-scope .vfe-partners__logos img {
+  height: auto;
+  width: calc(var(--w) * 0.85);
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-partners__logos img {
+    width: var(--w);
+  }
+}
+/* ---------- Image gallery ---------- */
+#vf-ebus-scope .vfe-gallery {
+  padding-block: 60px;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-gallery {
+    padding-block: 120px;
+  }
+}
+#vf-ebus-scope .vfe-gallery__title {
+  margin-bottom: 30px;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-gallery__title {
+    max-width: 404px;
+    padding-block: 4px;
+  }
+}
+#vf-ebus-scope .vfe-gallery__track {
+  --track-pad: max(16px, calc(50% - 163px));
+  gap: 16px;
+  padding-inline: var(--track-pad);
+  scroll-padding-inline: var(--track-pad);
+  cursor: grab;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-gallery__track {
+    /* Two slides centred, neighbours peeking */
+    --track-pad: max(40px, calc(50% - 495px));
+    gap: 30px;
+  }
+}
+#vf-ebus-scope .vfe-gallery__slide {
+  width: 326px;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 20px;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-gallery__slide {
+    width: 480px;
+    border-radius: 40px;
+  }
+}
+#vf-ebus-scope .vfe-gallery__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* "Why choose VinFast EBus" — image + reasons */
+#vf-ebus-scope .vfe-why--surface {
+  padding-block: 60px;
+  background: #f7f9f9;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-why--surface {
+    padding-block: 120px;
+  }
+}
+#vf-ebus-scope .vfe-why__img {
+  width: 100%;
+  height: 376px;
+  object-fit: cover;
+  border-radius: 40px;
+}
+#vf-ebus-scope .vfe-why__list {
+  gap: 16px;
+  margin-top: 30px;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-why__list {
+    display: flex;
+    gap: 30px;
+    overflow: visible;
+  }
+}
+#vf-ebus-scope .vfe-why__item {
+  width: 100%;
+  text-align: center;
+  color: #3c3c3c;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-why__item {
+    flex: 1 1 0;
+    width: auto;
+  }
+  #vf-ebus-scope .vfe-why__item + .vfe-why__item {
+    padding-left: 30px;
+    border-left: 1px solid #1464f4;
+  }
+}
+#vf-ebus-scope .vfe-why__item h3 {
+  margin-bottom: 8px;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 600;
+}
+@media (min-width: 1024px) {
+  #vf-ebus-scope .vfe-why__item h3 {
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: 600;
+  }
+}
+</style>
+
+<!-- ============================================================
+     VINFAST EBUS — ABOUT US
+     Markup only — build.py wraps it with style.css + ebus.js
+     ============================================================ -->
+<div id="vf-ebus-scope" class="vfe-page vfe-page--about-us">
+
+  <!-- ============ Hero ============ -->
+  <section class="vfe-about-hero">
+    <img class="vfe-about-hero__bg" src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/hero-about.webp" fetchpriority="high" alt="" width="1920" height="1080">
+    <div class="vfe-about-hero__content">
+      <h1 class="vfe-heading-1">Powered by Progress</h1>
+      <!-- TODO: link to the company profile (video / PDF) -->
+      <a class="vfe-about-hero__link" href="#">Our company profile</a>
+    </div>
+  </section>
+
+  <!-- ============ Intro + timeline ============ -->
+  <section class="vfe-intro">
+    <div class="vfe-container-wide">
+      <div class="vfe-intro__head">
+        <h2 class="vfe-heading-2 vfe-heading--black">VinFast – electrical mobility for a sustainable future</h2>
+        <p class="vfe-text-body">Our mission is to drive urban decarbonization through green mobility solutions, offering clean, efficient, and intelligent electric buses that reduce emissions, improve air quality, and create more livable cities for future generations.</p>
+      </div>
+
+      <div class="vfe-timeline">
+        <ol class="vfe-timeline__list">
+          <li class="vfe-timeline__item">
+            <span class="vfe-timeline__year">2017</span>
+            <span class="vfe-timeline__dot" aria-hidden="true"></span>
+            <p class="vfe-timeline__card">Establishment of VinFast’s state-of-the-art automotive manufacturing complex with globally leading scalability that boasts up to 90% automation in Hai Phong, Vietnam.</p>
+          </li>
+          <li class="vfe-timeline__item">
+            <span class="vfe-timeline__year">2021</span>
+            <span class="vfe-timeline__dot" aria-hidden="true"></span>
+            <p class="vfe-timeline__card">VinFast launched and began operating the Green bus, the first electric bus in Vietnam.</p>
+          </li>
+          <li class="vfe-timeline__item">
+            <span class="vfe-timeline__year">2021</span>
+            <span class="vfe-timeline__dot" aria-hidden="true"></span>
+            <p class="vfe-timeline__card">VinFast officially start operating on five markets in North America and Europe.</p>
+          </li>
+          <li class="vfe-timeline__item">
+            <span class="vfe-timeline__year">2023</span>
+            <span class="vfe-timeline__dot" aria-hidden="true"></span>
+            <p class="vfe-timeline__card">VinFast officially listed on NASDAQ.</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Story slider ============ -->
+  <section class="vfe-story" data-vfe-fader aria-roledescription="carousel" aria-label="About VinFast">
+    <div class="vfe-story__card">
+      <div class="vfe-story__body">
+        <div class="vfe-fade-stack">
+          <div class="vfe-story__text is-active" data-vfe-fade-slide="0">
+            <h2 class="vfe-heading-2">Global EV company</h2>
+            <p class="vfe-text-body">VinFast is a global electric mobility company shaping the future of transportation. Backed by Vingroup, one of Southeast Asia’s largest and most dynamic conglomerates, VinFast has rapidly become an international EV player. With manufacturing hubs in Vietnam and the United States, VinFast offers a production capacity up to 2,000 electric buses per year.</p>
+          </div>
+          <div class="vfe-story__text" data-vfe-fade-slide="1">
+            <h2 class="vfe-heading-2">Wide range of electrical vehicles</h2>
+            <p class="vfe-text-body">But VinFast is more than just a vehicle manufacturer. We produce electric buses in four models, electric cars in multiple segments, and electric scooters and bikes in a wide range of configurations. Beyond production, we also operate bus systems in several major cities in Southeast Asia – giving us real-world experience with the challenges of urban mobility and public transport operations.</p>
+          </div>
+          <div class="vfe-story__text" data-vfe-fade-slide="2">
+            <h2 class="vfe-heading-2">On the road from 100 % electric…</h2>
+            <p class="vfe-text-body">VinFast began as a manufacturer of internal combustion engine vehicles, but with a clear vision, a focus on sustainability, and a strong commitment to change, the company has transitioned to 100% electric.</p>
+          </div>
+          <div class="vfe-story__text" data-vfe-fade-slide="3">
+            <h2 class="vfe-heading-2">… to 100% sustainable</h2>
+            <p class="vfe-text-body">Driven by green innovation for both cities and the planet, VinFast is strongly committed to the global goal of net zero emissions by 2050. With a growing ecosystem of electric products and a widespread charging network, we actively contribute to cleaner air, smarter cities, and a more sustainable transport infrastructure.<br><br>Join us on the road from 100% electrical to 100% sustainable.</p>
+          </div>
+        </div>
+
+        <div class="vfe-slider-actions vfe-slider-actions--inline">
+          <button class="vfe-arrow-btn vfe-arrow-btn--sm" type="button" aria-label="Previous" data-vfe-fade-prev>
+            <span class="vfe-icon vfe-icon--arrow-left" aria-hidden="true"></span>
+          </button>
+          <div class="vfe-dots" data-vfe-fade-dots></div>
+          <button class="vfe-arrow-btn vfe-arrow-btn--sm" type="button" aria-label="Next" data-vfe-fade-next>
+            <span class="vfe-icon vfe-icon--arrow-right" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="vfe-story__media vfe-fade-stack">
+        <img class="is-active" data-vfe-fade-slide="0" style="object-position: 5% center" src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/story-1.webp" alt="VinFast electric buses at a charging depot" width="942" height="643" loading="lazy">
+        <img data-vfe-fade-slide="1" src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/story-2.webp" alt="" width="1320" height="1556" loading="lazy">
+        <img data-vfe-fade-slide="2" src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/story-3.webp" alt="" width="1320" height="682" loading="lazy">
+        <img data-vfe-fade-slide="3" src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/story-4.webp" alt="" width="1320" height="742" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VinFast in numbers ============ -->
+  <section class="vfe-numbers vfe-container-wide" data-vfe-carousel>
+    <h2 class="vfe-section-title vfe-heading-2 vfe-heading--black">VinFast in Numbers</h2>
+    <ul class="vfe-numbers__track vfe-carousel-track" data-vfe-carousel-track>
+      <li class="vfe-numbers__item"><strong>97,000 eCars</strong>produced in 2024</li>
+      <li class="vfe-numbers__item"><strong>up to 2,000 eBuses</strong>production capacity per year</li>
+      <li class="vfe-numbers__item"><strong>50,000+ employees</strong>globally</li>
+    </ul>
+    <div class="vfe-slider-actions">
+      <button class="vfe-arrow-btn" type="button" aria-label="Previous" data-vfe-carousel-prev>
+        <span class="vfe-icon vfe-icon--arrow-left" aria-hidden="true"></span>
+      </button>
+      <div class="vfe-dots" data-vfe-carousel-dots></div>
+      <button class="vfe-arrow-btn" type="button" aria-label="Next" data-vfe-carousel-next>
+        <span class="vfe-icon vfe-icon--arrow-right" aria-hidden="true"></span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ============ Did you know ============ -->
+  <section class="vfe-did-you-know vfe-container-wide">
+    <div class="vfe-did-you-know__map">
+      <img src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/map-vietnam.webp" alt="Map of Vietnam within Southeast Asia" width="373" height="373" loading="lazy">
+      <svg class="vfe-did-you-know__stage" viewBox="0 0 1290 185" preserveAspectRatio="none" aria-hidden="true">
+        <path fill="currentColor" d="M62.6235 46.9509C75.5925 18.3616 104.084 0 135.478 0L1154.52 0C1185.92 0 1214.41 18.3616 1227.38 46.9509L1274.62 151.085C1281.82 166.974 1270.21 185 1252.76 185L37.2411 185C19.794 185 8.17719 166.974 15.3848 151.085L62.6235 46.9509Z"/>
+      </svg>
+    </div>
+    <h2 class="vfe-heading-3 vfe-heading--black">Did you know?</h2>
+    <div class="vfe-did-you-know__cols">
+      <p>Vietnam may be far from Europe, but it’s a country with a rapidly growing global presence. In terms of area, it is relatively large – just slightly smaller than Germany and about half the size of France.</p>
+      <p>With a population exceeding 100 million, Vietnam accounts for nearly a quarter of the EU’s population. The country is quickly expanding its global outreach and establishing strategic international collaborations.</p>
+      <p>Vietnam is currently Asia’s fastest-growing economy, with an estimated GDP growth of over 8% in 2025.<br><br>Vietnam is rising. Ride with it.</p>
+    </div>
+  </section>
+
+  <!-- ============ Vingroup / production ============ -->
+  <div class="vfe-splits">
+    <section class="vfe-split">
+      <div class="vfe-split__content">
+        <h2 class="vfe-heading-2">Powered by Vingroup</h2>
+        <div class="vfe-split__text vfe-text-body">
+          <p>Vingroup is one of East Asia’s largest private conglomerates, with a bold vision to shape a modern, connected, and sustainable future.</p>
+          <p>Founded in 1993, the group has rapidly expanded across key sectors including technology, industry, real estate, healthcare, education, and mobility.</p>
+          <p>At the heart of Vingroup’s success lies a deep commitment to innovation and long-term value creation. By combining local insight with global partnerships, Vingroup delivers world-class solutions that are both scalable and impactful.</p>
+          <p>With over 50,000 employees and an expanding international footprint, the group is emerging as a rising force on the global stage. From smart cities and cutting-edge hospitals to high-performing schools and electric vehicles, Vingroup’s initiatives are all driven by one goal: improving life, in Vietnam and the world.</p>
+        </div>
+      </div>
+      <div class="vfe-split__media">
+        <img class="vfe-fig-crop" style="--cw: 172.66%; --cx: -70.18%" src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/vingroup.webp" alt="Landmark 81 and the Saigon river skyline" width="1440" height="809" loading="lazy">
+      </div>
+    </section>
+
+    <section class="vfe-split vfe-split--reverse">
+      <div class="vfe-split__media">
+        <picture>
+          <source media="(min-width: 1024px)" srcset="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/factory.webp" width="1440" height="960">
+          <img class="vfe-fig-crop" style="--cw: 283.31%; --ch: 163.05%; --cx: -91.65%; --cy: -31.53%; --cw-lg: 149.93%; --ch-lg: 100%; --cx-lg: -20.88%; --cy-lg: 0%" src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/factory-mobile.webp" alt="VinFast production line" width="1251" height="720" loading="lazy">
+        </picture>
+      </div>
+      <div class="vfe-split__content">
+        <h2 class="vfe-heading-2">World-class production facilities</h2>
+        <div class="vfe-split__text vfe-text-body">
+          <p>VinFast is building a world-class global manufacturing network to support the shift to smart and sustainable mobility.</p>
+          <p>The company’s main production hub in Hai Phong, Vietnam spans close to 1,000 hectares and ranks among the most advanced automotive factories in Southeast Asia. This fully integrated, highly automated site is designed for maximum efficiency, scalability, and high-quality output across vehicles, batteries, and components.</p>
+          <p>To serve key international markets, VinFast is expanding its global footprint with new production facilities.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ Partners ============ -->
+  <section class="vfe-partners vfe-container">
+    <div class="vfe-partners__head">
+      <h2 class="vfe-heading-2">Vietnamese Roots, Worldwide Bonds</h2>
+      <p class="vfe-text-body">When aiming for building the world’s best electric buses, you need the world’s best suppliers and partners. At VinFast, we are proud to collaborate with global industry leaders who share our commitment to innovation, efficiency, and sustainability. Together, we and our partners, continuously raise the bar for smarter, cleaner, more reliable and sustainable transportation.</p>
+    </div>
+    <ul class="vfe-partners__logos">
+      <li><img style="--w: 101px" src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/partner-bosch.svg" alt="Bosch" width="101" height="23" loading="lazy"></li>
+      <li><img style="--w: 61px" src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/partner-nvidia.svg" alt="NVIDIA" width="61" height="46" loading="lazy"></li>
+      <li><img style="--w: 89px" src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/partner-catl.svg" alt="CATL" width="89" height="18" loading="lazy"></li>
+      <li><img style="--w: 110px" src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/partner-siemens.svg" alt="Siemens" width="110" height="18" loading="lazy"></li>
+    </ul>
+  </section>
+
+  <!-- ============ Gallery ============ -->
+  <section class="vfe-gallery" data-vfe-carousel data-vfe-carousel-start="1">
+    <div class="vfe-container-wide">
+      <h2 class="vfe-gallery__title vfe-heading-2">The Machine That Builds The Machine....</h2>
+    </div>
+    <div class="vfe-gallery__track vfe-carousel-track" data-vfe-carousel-track>
+      <figure class="vfe-gallery__slide"><img src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/machine-1.webp" alt="Workers on the VinFast production line" width="960" height="540" loading="lazy"></figure>
+      <figure class="vfe-gallery__slide"><img src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/machine-2.webp" alt="VinFast factory entrance at dusk" width="960" height="640" loading="lazy"></figure>
+      <figure class="vfe-gallery__slide"><img src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/machine-3.webp" alt="Automated logistics inside the VinFast plant" width="960" height="536" loading="lazy"></figure>
+      <figure class="vfe-gallery__slide"><img src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/machine-1.webp" alt="" width="960" height="540" loading="lazy"></figure>
+    </div>
+    <div class="vfe-slider-actions">
+      <button class="vfe-arrow-btn" type="button" aria-label="Previous image" data-vfe-carousel-prev>
+        <span class="vfe-icon vfe-icon--arrow-left" aria-hidden="true"></span>
+      </button>
+      <div class="vfe-dots" data-vfe-carousel-dots></div>
+      <button class="vfe-arrow-btn" type="button" aria-label="Next image" data-vfe-carousel-next>
+        <span class="vfe-icon vfe-icon--arrow-right" aria-hidden="true"></span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ============ Why choose ============ -->
+  <section class="vfe-why vfe-why--surface" data-vfe-carousel data-vfe-carousel-start="2">
+    <div class="vfe-container">
+      <h2 class="vfe-section-title vfe-heading-2">Why choose <br class="vfe-u-mobile-only">VinFast eBus</h2>
+      <picture>
+        <source media="(min-width: 1024px)" srcset="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/why-about.webp" width="2140" height="1428">
+        <img class="vfe-why__img" src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/why-home.webp" alt="Inside a VinFast eBus" width="2140" height="1129" loading="lazy">
+      </picture>
+      <div class="vfe-why__list vfe-carousel-track" data-vfe-carousel-track>
+        <div class="vfe-why__item">
+          <h3>International Standards</h3>
+          <p>Certification to US standards for quality and safety.</p>
+        </div>
+        <div class="vfe-why__item">
+          <h3>Production capacity</h3>
+          <p>Up to 2000&nbsp;ebuses&nbsp;/ year</p>
+        </div>
+        <div class="vfe-why__item">
+          <h3>Long-Term Support</h3>
+          <p>Quick deployment with reliable technical support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+</div>
+
+<script>
+/* VinFast eBus — page interactions (vanilla, no dependencies)
+   Runs only inside #vf-ebus-scope (the CMS "Body" wrapper); header/footer belong to the CMS.
+   Hooks are data-vfe-* attributes so they can't collide with theme/Bootstrap JS. */
+(function () {
+  'use strict';
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var EDGE = 8; // px tolerance for sub-pixel snap positions
+  var NUDGE = 32; // px left before the end of a carousel that still counts as "at the end"
+
+  function each(list, fn) {
+    Array.prototype.forEach.call(list, fn);
+  }
+
+  // Dots are only rendered when there is something to paginate
+  function renderDots(container, count, onClick) {
+    if (!container) return [];
+    container.innerHTML = '';
+    container.hidden = count < 2;
+    var dots = [];
+    for (var i = 0; i < count && count > 1; i++) {
+      var dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'vfe-dots__dot';
+      dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      dot.addEventListener('click', onClick.bind(null, i));
+      container.appendChild(dot);
+      dots.push(dot);
+    }
+    return dots;
+  }
+
+  /* ---------- Fade slider ([data-vfe-fader]) ----------
+     Every element with data-vfe-fade-slide="n" belongs to slide n, so the text
+     and the image of one slide may live in different containers. */
+  function initFader(root) {
+    var slides = root.querySelectorAll('[data-vfe-fade-slide]');
+    var count = 0;
+    each(slides, function (el) { count = Math.max(count, Number(el.dataset.vfeFadeSlide) + 1); });
+    if (!count) return;
+
+    var current = 0;
+    var dots = renderDots(root.querySelector('[data-vfe-fade-dots]'), count, go);
+    var prevs = root.querySelectorAll('[data-vfe-fade-prev]');
+    var nexts = root.querySelectorAll('[data-vfe-fade-next]');
+    var loop = root.hasAttribute('data-vfe-fade-loop');
+
+    function go(index) {
+      current = loop ? (index + count) % count : Math.max(0, Math.min(count - 1, index));
+      each(slides, function (el) {
+        var active = Number(el.dataset.vfeFadeSlide) === current;
+        el.classList.toggle('is-active', active);
+        el.setAttribute('aria-hidden', String(!active));
+      });
+      dots.forEach(function (dot, i) { dot.classList.toggle('is-active', i === current); });
+      if (!loop) {
+        each(prevs, function (b) { b.disabled = current === 0; });
+        each(nexts, function (b) { b.disabled = current === count - 1; });
+      }
+    }
+
+    each(prevs, function (b) { b.addEventListener('click', function () { go(current - 1); }); });
+    each(nexts, function (b) { b.addEventListener('click', function () { go(current + 1); }); });
+
+    // Swipe on touch devices
+    var startX = null;
+    root.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
+    root.addEventListener('touchend', function (e) {
+      if (startX === null) return;
+      var dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) go(current + (dx < 0 ? 1 : -1));
+      startX = null;
+    });
+
+    go(0);
+  }
+
+  /* ---------- Scroll-snap carousels ([data-vfe-carousel]) ---------- */
+  function initCarousel(root) {
+    var track = root.querySelector('[data-vfe-carousel-track]');
+    if (!track) return null;
+
+    var prevs = root.querySelectorAll('[data-vfe-carousel-prev]');
+    var nexts = root.querySelectorAll('[data-vfe-carousel-next]');
+    var dotsBox = root.querySelector('[data-vfe-carousel-dots]');
+    var start = Number(root.dataset.vfeCarouselStart || 0);
+    var dots = [];
+
+    function slides() {
+      return Array.prototype.filter.call(track.children, function (el) { return !el.hidden; });
+    }
+
+    function step() {
+      var items = slides();
+      if (items.length < 2) return track.clientWidth;
+      return items[1].offsetLeft - items[0].offsetLeft;
+    }
+
+    function index() {
+      var max = track.scrollWidth - track.clientWidth;
+      if (max > EDGE && track.scrollLeft >= max - EDGE) return slides().length - 1;
+      return Math.round(track.scrollLeft / step());
+    }
+
+    function scrollToIndex(i, instant) {
+      // 'instant' (not 'auto') so CSS scroll-behavior: smooth doesn't animate it
+      track.scrollTo({ left: i * step(), behavior: instant || reduceMotion ? 'instant' : 'smooth' });
+    }
+
+    function update() {
+      var max = track.scrollWidth - track.clientWidth;
+      each(prevs, function (b) { b.disabled = track.scrollLeft <= EDGE; });
+      // A few px left (track padding): a click would only nudge the track, so treat it as the end
+      each(nexts, function (b) { b.disabled = track.scrollLeft >= max - NUDGE; });
+      var current = index();
+      dots.forEach(function (dot, i) { dot.classList.toggle('is-active', i === current); });
+    }
+
+    function refresh(startIndex) {
+      dots = renderDots(dotsBox, slides().length, scrollToIndex);
+      track.scrollLeft = 0;
+      if (startIndex) scrollToIndex(startIndex, true);
+      update();
+    }
+
+    // Arrows go to the nearest snap point at least half a card away. index() can't be used:
+    // at the end of the track it returns the last slide, whose snap point may sit only a few
+    // px before the end, so "previous" would barely move.
+    function move(dir) {
+      var s = step();
+      var target = dir < 0 ? Math.floor((track.scrollLeft - s / 2) / s) : Math.ceil((track.scrollLeft + s / 2) / s);
+      scrollToIndex(Math.max(0, Math.min(target, slides().length - 1)));
+    }
+
+    each(prevs, function (b) { b.addEventListener('click', function () { move(-1); }); });
+    each(nexts, function (b) { b.addEventListener('click', function () { move(1); }); });
+
+    var ticking = false;
+    track.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () { update(); ticking = false; });
+    }, { passive: true });
+    window.addEventListener('resize', update);
+
+    enableMouseDrag(track, scrollToIndex, index);
+    refresh(start);
+    return { refresh: refresh };
+  }
+
+  // Lets desktop mouse users drag carousels (some have no arrows on desktop)
+  function enableMouseDrag(track, scrollToIndex, index) {
+    var startX = 0;
+    var startScroll = 0;
+    var dragging = false;
+    var moved = false;
+
+    track.addEventListener('pointerdown', function (e) {
+      if (e.pointerType !== 'mouse' || e.button !== 0) return;
+      if (track.scrollWidth <= track.clientWidth) return;
+      dragging = true;
+      moved = false;
+      startX = e.clientX;
+      startScroll = track.scrollLeft;
+    });
+
+    window.addEventListener('pointermove', function (e) {
+      if (!dragging) return;
+      var dx = e.clientX - startX;
+      if (!moved && Math.abs(dx) < 5) return;
+      if (!moved) {
+        moved = true;
+        track.classList.add('is-dragging');
+      }
+      track.scrollLeft = startScroll - dx;
+    });
+
+    window.addEventListener('pointerup', function () {
+      if (!dragging) return;
+      dragging = false;
+      if (!moved) return;
+      track.classList.remove('is-dragging');
+      scrollToIndex(index());
+    });
+
+    // Swallow the click that ends a drag so links/buttons don't fire
+    track.addEventListener('click', function (e) {
+      if (!moved) return;
+      e.preventDefault();
+      e.stopPropagation();
+      moved = false;
+    }, true);
+    track.addEventListener('dragstart', function (e) { e.preventDefault(); });
+  }
+
+  /* ---------- EB12 / EB8 switcher ([data-vfe-model-switch]) ---------- */
+  function initModelSwitch(scope, carousels) {
+    each(scope.querySelectorAll('[data-vfe-model-switch]'), function (section) {
+      var tabs = section.querySelectorAll('[data-vfe-model-tab]');
+      var carouselRoot = section.querySelector('[data-vfe-carousel]');
+
+      function select(model) {
+        each(tabs, function (tab) {
+          tab.setAttribute('aria-selected', String(tab.dataset.vfeModelTab === model));
+        });
+        each(section.querySelectorAll('[data-vfe-model]'), function (el) {
+          el.hidden = el.dataset.vfeModel !== model;
+        });
+        var carousel = carousels.get(carouselRoot);
+        if (carousel) carousel.refresh();
+      }
+
+      each(tabs, function (tab) {
+        tab.addEventListener('click', function () { select(tab.dataset.vfeModelTab); });
+      });
+    });
+  }
+
+  function init() {
+    var scope = document.getElementById('vf-ebus-scope');
+    if (!scope) return;
+
+    each(scope.querySelectorAll('[data-vfe-fader]'), initFader);
+
+    var carousels = new Map();
+    each(scope.querySelectorAll('[data-vfe-carousel]'), function (root) {
+      carousels.set(root, initCarousel(root));
+    });
+
+    initModelSwitch(scope, carousels);
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>

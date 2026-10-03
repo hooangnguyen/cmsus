@@ -1,0 +1,511 @@
+<link rel="stylesheet" href="style.css">
+<!-- ============================================================
+     VINFAST EBUS — OUR BUSES
+     Markup + JS. CSS: style.css
+     ============================================================ -->
+<div id="vf-ebus-scope" class="vfe-page vfe-page--our-buses">
+
+  <!-- ============ Hero (EB12 / EB8) ============ -->
+  <section class="vfe-hero" data-vfe-fader data-vfe-fade-loop aria-roledescription="carousel" aria-label="VinFast eBus models">
+    <article class="vfe-hero__slide is-active" data-vfe-fade-slide="0" aria-roledescription="slide" aria-label="1 of 2">
+      <img class="vfe-hero__bg" src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/hero-home.webp" fetchpriority="high" alt="VinFast EB12 electric bus at a city bus stop" width="1840" height="854">
+      <h1 class="vfe-hero__title">
+        <span class="vfe-logo-model vfe-logo-model--eb12" aria-hidden="true"></span>
+        <span class="vfe-visually-hidden">VinFast EB12</span>
+      </h1>
+      <dl class="vfe-hero__specs">
+        <div class="vfe-hero__spec"><dt>LFP Battery</dt><dd>by CATL/Gotion</dd></div>
+        <div class="vfe-hero__spec"><dt>Fast charging</dt><dd>250 kW CCS1</dd></div>
+        <div class="vfe-hero__spec"><dt>&gt;279 miles</dt><dd>with 400 kWh battery</dd></div>
+        <div class="vfe-hero__spec"><dt>Features</dt><dd>Wi-Fi, USB, low-floor, ADAS</dd></div>
+      </dl>
+    </article>
+
+    <!-- TODO(content): EB8 hero copy is derived from the spec table — confirm with BA -->
+    <article class="vfe-hero__slide" data-vfe-fade-slide="1" aria-roledescription="slide" aria-label="2 of 2">
+      <img class="vfe-hero__bg vfe-hero__bg--eb8" src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/hero-eb8.webp" alt="VinFast EB8 electric bus on a city street" width="2400" height="1302" loading="lazy">
+      <h2 class="vfe-hero__title">
+        <span class="vfe-logo-model vfe-logo-model--eb8" aria-hidden="true"></span>
+        <span class="vfe-visually-hidden">VinFast EB8</span>
+      </h2>
+      <dl class="vfe-hero__specs">
+        <div class="vfe-hero__spec"><dt>LFP Battery</dt><dd>by CATL/Gotion</dd></div>
+        <div class="vfe-hero__spec"><dt>Fast charging</dt><dd>&lt;45 minutes, 20–80%</dd></div>
+        <div class="vfe-hero__spec"><dt>&gt;186 miles</dt><dd>with 266 kWh battery</dd></div>
+        <div class="vfe-hero__spec"><dt>Features</dt><dd>Wi-Fi, USB, low-floor, ADAS</dd></div>
+      </dl>
+    </article>
+
+    <p class="vfe-hero__disclaimer">Disclaimer : vehicle image shown may be slightly different from actual vehicle</p>
+
+    <div class="vfe-hero__controls">
+      <button class="vfe-arrow-btn vfe-arrow-btn--light" type="button" aria-label="Previous model" data-vfe-fade-prev>
+        <span class="vfe-icon vfe-icon--arrow-left" aria-hidden="true"></span>
+      </button>
+      <button class="vfe-arrow-btn vfe-arrow-btn--light" type="button" aria-label="Next model" data-vfe-fade-next>
+        <span class="vfe-icon vfe-icon--arrow-right" aria-hidden="true"></span>
+      </button>
+    </div>
+    <div class="vfe-hero__dots vfe-dots" data-vfe-fade-dots></div>
+  </section>
+
+  <!-- ============ Overview ============ -->
+  <section class="vfe-overview" id="vfe-overview" data-vfe-carousel data-vfe-carousel-start="1">
+    <div class="vfe-overview__head vfe-container">
+      <h2 class="vfe-heading-2">Enjoy the view of nature, ride in style...</h2>
+      <div class="vfe-arrow-group">
+        <button class="vfe-arrow-btn" type="button" aria-label="Previous slide" data-vfe-carousel-prev>
+          <span class="vfe-icon vfe-icon--arrow-left" aria-hidden="true"></span>
+        </button>
+        <button class="vfe-arrow-btn" type="button" aria-label="Next slide" data-vfe-carousel-next>
+          <span class="vfe-icon vfe-icon--arrow-right" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="vfe-overview__track vfe-carousel-track" data-vfe-carousel-track>
+      <figure class="vfe-overview__slide">
+        <img src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/eb12-entrance.webp" alt="Passenger stepping off the VinFast EB12" width="1400" height="752" loading="lazy">
+        <figcaption class="vfe-overview__caption">The Full-Size City eBus<br>The VinFast 12m eBus</figcaption>
+      </figure>
+      <figure class="vfe-overview__slide">
+        <picture>
+          <source media="(min-width: 1024px)" srcset="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/eb12-in-action.webp" width="1400" height="788">
+          <img style="object-position: 32.1% center" src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/overview-mobile.webp" alt="VinFast EB12 at a bus stop downtown" width="1400" height="788" loading="lazy">
+        </picture>
+        <figcaption class="vfe-overview__caption">The Full-Size City eBus<br>The VinFast 12m eBus</figcaption>
+      </figure>
+      <figure class="vfe-overview__slide">
+        <img src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/eb12-entrance.webp" alt="" width="1400" height="752" loading="lazy">
+        <figcaption class="vfe-overview__caption">The Full-Size City eBus<br>The VinFast 12m eBus</figcaption>
+      </figure>
+    </div>
+
+    <div class="vfe-overview__actions">
+      <button class="vfe-arrow-btn" type="button" aria-label="Previous slide" data-vfe-carousel-prev>
+        <span class="vfe-icon vfe-icon--arrow-left" aria-hidden="true"></span>
+      </button>
+      <div class="vfe-dots" data-vfe-carousel-dots></div>
+      <button class="vfe-arrow-btn" type="button" aria-label="Next slide" data-vfe-carousel-next>
+        <span class="vfe-icon vfe-icon--arrow-right" aria-hidden="true"></span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ============ External ============ -->
+  <section class="vfe-exterior" id="vfe-external" data-vfe-model-switch>
+    <div class="vfe-container">
+      <h2 class="vfe-exterior__title vfe-heading-2">VinFast eBus</h2>
+
+      <div class="vfe-model-tabs" role="tablist" aria-label="Choose a model">
+        <button class="vfe-model-tab" type="button" role="tab" aria-selected="true" data-vfe-model-tab="eb12">
+          <span class="vfe-logo-model vfe-logo-model--eb12" aria-hidden="true"></span>
+          <span class="vfe-visually-hidden">EB12</span>
+        </button>
+        <button class="vfe-model-tab" type="button" role="tab" aria-selected="false" data-vfe-model-tab="eb8">
+          <span class="vfe-logo-model vfe-logo-model--eb8" aria-hidden="true"></span>
+          <span class="vfe-visually-hidden">EB8</span>
+        </button>
+      </div>
+
+      <div class="vfe-model-stage">
+        <img class="vfe-model-stage__img" src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/bus-eb12.webp" alt="VinFast EB12, side three-quarter view" width="1600" height="900" loading="lazy" data-vfe-model="eb12">
+        <img class="vfe-model-stage__img vfe-model-stage__img--eb8" src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/bus-eb8-v2.webp" alt="VinFast EB8, side three-quarter view" width="1600" height="914" loading="lazy" data-vfe-model="eb8" hidden>
+      </div>
+
+      <div class="vfe-explore" data-vfe-carousel>
+        <div class="vfe-explore__head">
+          <h3 class="vfe-heading-3">Explore Exterior</h3>
+          <div class="vfe-arrow-group">
+            <button class="vfe-arrow-btn vfe-arrow-btn--dark" type="button" aria-label="Previous image" data-vfe-carousel-prev>
+              <span class="vfe-icon vfe-icon--arrow-left" aria-hidden="true"></span>
+            </button>
+            <button class="vfe-arrow-btn vfe-arrow-btn--dark" type="button" aria-label="Next image" data-vfe-carousel-next>
+              <span class="vfe-icon vfe-icon--arrow-right" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Image ↔ label mapping follows the "Asset for PDP" section in Figma -->
+        <div class="vfe-explore__track vfe-carousel-track" data-vfe-carousel-track>
+          <!-- EB12 -->
+          <article class="vfe-card" data-vfe-model="eb12">
+            <img class="vfe-card__img" src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/eb12-in-action.webp" alt="" width="1400" height="788" loading="lazy">
+            <div class="vfe-card__body">
+              <h4 class="vfe-card__title">In action</h4>
+              <p class="vfe-card__text">Welcoming passengers to a smooth and comfortable ride through the city.</p>
+            </div>
+          </article>
+          <article class="vfe-card" data-vfe-model="eb12">
+            <img class="vfe-card__img" src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/eb12-side-view.webp" alt="" width="1400" height="765" loading="lazy">
+            <div class="vfe-card__body">
+              <h4 class="vfe-card__title">Side View</h4>
+              <p class="vfe-card__text">Ready for a full day's work - &gt;279 miles range on a single charge</p>
+            </div>
+          </article>
+          <article class="vfe-card" data-vfe-model="eb12">
+            <img class="vfe-card__img" src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/eb12-entrance.webp" alt="" width="1400" height="752" loading="lazy">
+            <div class="vfe-card__body">
+              <h4 class="vfe-card__title">Entrance</h4>
+              <!-- TODO(content): placeholder copy from Figma -->
+              <p class="vfe-card__text">Potter ipsum wand elf parchment wingardium.</p>
+            </div>
+          </article>
+          <article class="vfe-card" data-vfe-model="eb12">
+            <img class="vfe-card__img" src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/eb12-front-light.webp" alt="" width="1400" height="751" loading="lazy">
+            <div class="vfe-card__body"><h4 class="vfe-card__title">Front Light</h4></div>
+          </article>
+          <article class="vfe-card" data-vfe-model="eb12">
+            <img class="vfe-card__img" src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/eb12-rear-view.webp" alt="" width="1400" height="750" loading="lazy">
+            <div class="vfe-card__body"><h4 class="vfe-card__title">Rear View</h4></div>
+          </article>
+          <article class="vfe-card" data-vfe-model="eb12">
+            <img class="vfe-card__img" src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/eb12-top-view.webp" alt="" width="1400" height="788" loading="lazy">
+            <div class="vfe-card__body"><h4 class="vfe-card__title">Top View</h4></div>
+          </article>
+
+          <!-- EB8 -->
+          <article class="vfe-card" data-vfe-model="eb8" hidden>
+            <img class="vfe-card__img" src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/eb8-in-action-v2.webp" alt="" width="1400" height="752" loading="lazy">
+            <div class="vfe-card__body">
+              <h4 class="vfe-card__title">In action</h4>
+              <p class="vfe-card__text">Welcoming passengers to a smooth and comfortable ride through the city.</p>
+            </div>
+          </article>
+          <article class="vfe-card" data-vfe-model="eb8" hidden>
+            <img class="vfe-card__img" src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/eb8-side-view.webp" alt="" width="1400" height="752" loading="lazy">
+            <div class="vfe-card__body">
+              <h4 class="vfe-card__title">Side View</h4>
+              <!-- TODO(content): range taken from Homepage product overview -->
+              <p class="vfe-card__text">Ready for a full day's work - &gt;186 miles range on a single charge</p>
+            </div>
+          </article>
+          <article class="vfe-card" data-vfe-model="eb8" hidden>
+            <img class="vfe-card__img" src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/eb8-rear-view.webp" alt="" width="1400" height="751" loading="lazy">
+            <div class="vfe-card__body"><h4 class="vfe-card__title">Rear View</h4></div>
+          </article>
+          <article class="vfe-card" data-vfe-model="eb8" hidden>
+            <img class="vfe-card__img" src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/eb8-top-view.webp" alt="" width="1400" height="750" loading="lazy">
+            <div class="vfe-card__body"><h4 class="vfe-card__title">Top View</h4></div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EB12 Interior ============ -->
+  <section class="vfe-internal" id="vfe-internal">
+    <div class="vfe-internal__track vfe-carousel-track" data-vfe-carousel-track>
+      <div class="vfe-internal__slide">
+        <img src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/eb12-interior.webp" alt="Interior of the VinFast EB12" width="800" height="447" loading="lazy">
+        <div class="vfe-internal__info">
+          <h2 class="vfe-internal__title">EB12 Interior</h2>
+          <p class="vfe-internal__text">Stay connected and entertained with a customizable 15.6 inch touch screen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Tech ============ -->
+  <section class="vfe-tech" id="vfe-tech">
+    <div class="vfe-tech__content">
+      <h2 class="vfe-tech__title vfe-heading-2">Smart Tech that<br> enhance safety and<br> driving efficiency</h2>
+      <p class="vfe-tech__text">Our eBuses are designed to ensure safe, smooth, and efficient travel in urban environments. To achieve this, we integrate and continuously refine advanced features at the forefront of technology. This includes not only driver assistance systems powered by AI cameras and 4D radar for real-time safety alerts, but also intelligent solutions for charging, maintenance, and service, as well as seamless connectivity and communication for both staff and passengers, and much more.</p>
+    </div>
+    <div class="vfe-tech__media">
+      <img src="https://static-cms-prod.vinfastauto.us/statics/ebus-2026/smart-tech.webp" alt="Top view of a VinFast eBus with radar and camera sensing zones" width="1200" height="1200" loading="lazy">
+    </div>
+  </section>
+
+  <!-- ============ Specs ============ -->
+  <section class="vfe-specs" id="vfe-specs">
+    <div class="vfe-container-specs">
+      <h2 class="vfe-specs__title vfe-heading-2">Vehicle Specification</h2>
+
+      <div class="vfe-specs__body">
+        <svg class="vfe-specs__notch" viewBox="0 0 61.76 24.3" aria-hidden="true">
+          <path fill="currentColor" d="M0 0C2.122 0 4.157.843 5.657 2.343L25.225 21.912C28.35 25.036 33.415 25.036 36.539 21.912L56.107 2.343C57.608.843 59.643 0 61.764 0Z"/>
+        </svg>
+
+        <div class="vfe-spec-table" style="--rows: 5" role="table" aria-label="EB8 and EB12 specifications">
+          <div class="vfe-spec-table__corner" role="columnheader"><span class="vfe-visually-hidden">Specification</span></div>
+          <div class="vfe-spec-table__model" role="columnheader">
+            <span class="vfe-logo-model vfe-logo-model--eb8" aria-hidden="true"></span><span class="vfe-visually-hidden">EB8</span>
+          </div>
+          <div class="vfe-spec-table__model" role="columnheader">
+            <span class="vfe-logo-model vfe-logo-model--eb12" aria-hidden="true"></span><span class="vfe-visually-hidden">EB12</span>
+          </div>
+          <div class="vfe-spec-table__card vfe-spec-table__card--eb8" aria-hidden="true"></div>
+          <div class="vfe-spec-table__card vfe-spec-table__card--eb12" aria-hidden="true"></div>
+          <div class="vfe-spec-table__spacer" aria-hidden="true"></div>
+
+          <div class="vfe-spec-table__label" role="rowheader">Length x Width x Height</div>
+          <div class="vfe-spec-table__value vfe-spec-table__value--eb8" role="cell">29.5 ft × 97.2 in × 128.0 in</div>
+          <div class="vfe-spec-table__value" role="cell">40 ft × 102 in × 130 in</div>
+
+          <div class="vfe-spec-table__label" role="rowheader">Passenger Capacity</div>
+          <div class="vfe-spec-table__value vfe-spec-table__value--eb8" role="cell">60 (20 Seated + 2 Wheelchair Bays + 38 standing)</div>
+          <div class="vfe-spec-table__value" role="cell">90 (29 Seated + 2 Wheelchair Bays + 59 standing for 3-Door)</div>
+
+          <div class="vfe-spec-table__label" role="rowheader">Motor</div>
+          <div class="vfe-spec-table__value vfe-spec-table__value--eb8" role="cell">340 kW</div>
+          <div class="vfe-spec-table__value" role="cell">325 kW</div>
+
+          <div class="vfe-spec-table__label" role="rowheader">Battery Capacity</div>
+          <div class="vfe-spec-table__value vfe-spec-table__value--eb8" role="cell">266 kWh LFP</div>
+          <div class="vfe-spec-table__value" role="cell">400 kWh / 528 kWh optional</div>
+
+          <div class="vfe-spec-table__label" role="rowheader">Charging Time</div>
+          <div class="vfe-spec-table__value vfe-spec-table__value--eb8" role="cell">&lt;45 minutes, 20–80%</div>
+          <div class="vfe-spec-table__value" role="cell">&lt;1 hour, 20–80%</div>
+        </div>
+
+        <div class="vfe-specs__actions vfe-btn-group">
+          <a class="vfe-btn vfe-btn--outline" href="#" download>Download Specifications</a>
+          <a class="vfe-btn vfe-btn--primary" href="/ebus/contact-us">Contact Sales</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+</div>
+
+<script>
+/* VinFast eBus — page interactions (vanilla, no dependencies)
+   Runs only inside #vf-ebus-scope (the CMS "Body" wrapper); header/footer belong to the CMS.
+   Hooks are data-vfe-* attributes so they can't collide with theme/Bootstrap JS. */
+(function () {
+  'use strict';
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var EDGE = 8; // px tolerance for sub-pixel snap positions
+  var NUDGE = 32; // px left before the end of a carousel that still counts as "at the end"
+
+  function each(list, fn) {
+    Array.prototype.forEach.call(list, fn);
+  }
+
+  // Dots are only rendered when there is something to paginate
+  function renderDots(container, count, onClick) {
+    if (!container) return [];
+    container.innerHTML = '';
+    container.hidden = count < 2;
+    var dots = [];
+    for (var i = 0; i < count && count > 1; i++) {
+      var dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'vfe-dots__dot';
+      dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      dot.addEventListener('click', onClick.bind(null, i));
+      container.appendChild(dot);
+      dots.push(dot);
+    }
+    return dots;
+  }
+
+  /* ---------- Fade slider ([data-vfe-fader]) ----------
+     Every element with data-vfe-fade-slide="n" belongs to slide n, so the text
+     and the image of one slide may live in different containers. */
+  function initFader(root) {
+    var slides = root.querySelectorAll('[data-vfe-fade-slide]');
+    var count = 0;
+    each(slides, function (el) { count = Math.max(count, Number(el.dataset.vfeFadeSlide) + 1); });
+    if (!count) return;
+
+    var current = 0;
+    var dots = renderDots(root.querySelector('[data-vfe-fade-dots]'), count, go);
+    var prevs = root.querySelectorAll('[data-vfe-fade-prev]');
+    var nexts = root.querySelectorAll('[data-vfe-fade-next]');
+    var loop = root.hasAttribute('data-vfe-fade-loop');
+
+    function go(index) {
+      current = loop ? (index + count) % count : Math.max(0, Math.min(count - 1, index));
+      each(slides, function (el) {
+        var active = Number(el.dataset.vfeFadeSlide) === current;
+        el.classList.toggle('is-active', active);
+        el.setAttribute('aria-hidden', String(!active));
+      });
+      dots.forEach(function (dot, i) { dot.classList.toggle('is-active', i === current); });
+      if (!loop) {
+        each(prevs, function (b) { b.disabled = current === 0; });
+        each(nexts, function (b) { b.disabled = current === count - 1; });
+      }
+    }
+
+    each(prevs, function (b) { b.addEventListener('click', function () { go(current - 1); }); });
+    each(nexts, function (b) { b.addEventListener('click', function () { go(current + 1); }); });
+
+    // Swipe on touch devices
+    var startX = null;
+    root.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
+    root.addEventListener('touchend', function (e) {
+      if (startX === null) return;
+      var dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) go(current + (dx < 0 ? 1 : -1));
+      startX = null;
+    });
+
+    go(0);
+  }
+
+  /* ---------- Scroll-snap carousels ([data-vfe-carousel]) ---------- */
+  function initCarousel(root) {
+    var track = root.querySelector('[data-vfe-carousel-track]');
+    if (!track) return null;
+
+    var prevs = root.querySelectorAll('[data-vfe-carousel-prev]');
+    var nexts = root.querySelectorAll('[data-vfe-carousel-next]');
+    var dotsBox = root.querySelector('[data-vfe-carousel-dots]');
+    var start = Number(root.dataset.vfeCarouselStart || 0);
+    var dots = [];
+
+    function slides() {
+      return Array.prototype.filter.call(track.children, function (el) { return !el.hidden; });
+    }
+
+    function step() {
+      var items = slides();
+      if (items.length < 2) return track.clientWidth;
+      return items[1].offsetLeft - items[0].offsetLeft;
+    }
+
+    function index() {
+      var max = track.scrollWidth - track.clientWidth;
+      if (max > EDGE && track.scrollLeft >= max - EDGE) return slides().length - 1;
+      return Math.round(track.scrollLeft / step());
+    }
+
+    function scrollToIndex(i, instant) {
+      // 'instant' (not 'auto') so CSS scroll-behavior: smooth doesn't animate it
+      track.scrollTo({ left: i * step(), behavior: instant || reduceMotion ? 'instant' : 'smooth' });
+    }
+
+    function update() {
+      var max = track.scrollWidth - track.clientWidth;
+      each(prevs, function (b) { b.disabled = track.scrollLeft <= EDGE; });
+      // A few px left (track padding): a click would only nudge the track, so treat it as the end
+      each(nexts, function (b) { b.disabled = track.scrollLeft >= max - NUDGE; });
+      var current = index();
+      dots.forEach(function (dot, i) { dot.classList.toggle('is-active', i === current); });
+    }
+
+    function refresh(startIndex) {
+      dots = renderDots(dotsBox, slides().length, scrollToIndex);
+      track.scrollLeft = 0;
+      if (startIndex) scrollToIndex(startIndex, true);
+      update();
+    }
+
+    // Arrows go to the nearest snap point at least half a card away. index() can't be used:
+    // at the end of the track it returns the last slide, whose snap point may sit only a few
+    // px before the end, so "previous" would barely move.
+    function move(dir) {
+      var s = step();
+      var target = dir < 0 ? Math.floor((track.scrollLeft - s / 2) / s) : Math.ceil((track.scrollLeft + s / 2) / s);
+      scrollToIndex(Math.max(0, Math.min(target, slides().length - 1)));
+    }
+
+    each(prevs, function (b) { b.addEventListener('click', function () { move(-1); }); });
+    each(nexts, function (b) { b.addEventListener('click', function () { move(1); }); });
+
+    var ticking = false;
+    track.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () { update(); ticking = false; });
+    }, { passive: true });
+    window.addEventListener('resize', update);
+
+    enableMouseDrag(track, scrollToIndex, index);
+    refresh(start);
+    return { refresh: refresh };
+  }
+
+  // Lets desktop mouse users drag carousels (some have no arrows on desktop)
+  function enableMouseDrag(track, scrollToIndex, index) {
+    var startX = 0;
+    var startScroll = 0;
+    var dragging = false;
+    var moved = false;
+
+    track.addEventListener('pointerdown', function (e) {
+      if (e.pointerType !== 'mouse' || e.button !== 0) return;
+      if (track.scrollWidth <= track.clientWidth) return;
+      dragging = true;
+      moved = false;
+      startX = e.clientX;
+      startScroll = track.scrollLeft;
+    });
+
+    window.addEventListener('pointermove', function (e) {
+      if (!dragging) return;
+      var dx = e.clientX - startX;
+      if (!moved && Math.abs(dx) < 5) return;
+      if (!moved) {
+        moved = true;
+        track.classList.add('is-dragging');
+      }
+      track.scrollLeft = startScroll - dx;
+    });
+
+    window.addEventListener('pointerup', function () {
+      if (!dragging) return;
+      dragging = false;
+      if (!moved) return;
+      track.classList.remove('is-dragging');
+      scrollToIndex(index());
+    });
+
+    // Swallow the click that ends a drag so links/buttons don't fire
+    track.addEventListener('click', function (e) {
+      if (!moved) return;
+      e.preventDefault();
+      e.stopPropagation();
+      moved = false;
+    }, true);
+    track.addEventListener('dragstart', function (e) { e.preventDefault(); });
+  }
+
+  /* ---------- EB12 / EB8 switcher ([data-vfe-model-switch]) ---------- */
+  function initModelSwitch(scope, carousels) {
+    each(scope.querySelectorAll('[data-vfe-model-switch]'), function (section) {
+      var tabs = section.querySelectorAll('[data-vfe-model-tab]');
+      var carouselRoot = section.querySelector('[data-vfe-carousel]');
+
+      function select(model) {
+        each(tabs, function (tab) {
+          tab.setAttribute('aria-selected', String(tab.dataset.vfeModelTab === model));
+        });
+        each(section.querySelectorAll('[data-vfe-model]'), function (el) {
+          el.hidden = el.dataset.vfeModel !== model;
+        });
+        var carousel = carousels.get(carouselRoot);
+        if (carousel) carousel.refresh();
+      }
+
+      each(tabs, function (tab) {
+        tab.addEventListener('click', function () { select(tab.dataset.vfeModelTab); });
+      });
+    });
+  }
+
+  function init() {
+    var scope = document.getElementById('vf-ebus-scope');
+    if (!scope) return;
+
+    each(scope.querySelectorAll('[data-vfe-fader]'), initFader);
+
+    var carousels = new Map();
+    each(scope.querySelectorAll('[data-vfe-carousel]'), function (root) {
+      carousels.set(root, initCarousel(root));
+    });
+
+    initModelSwitch(scope, carousels);
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>

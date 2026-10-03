@@ -1,0 +1,3 @@
+# Generated zips (rebuild with build_import.py / from cdn/)
+*.zip
+import/

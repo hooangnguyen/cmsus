@@ -1,0 +1,235 @@
+/* VinFast eBus — page interactions (vanilla, no dependencies)
+   Runs only inside #vf-ebus-scope (the CMS "Body" wrapper); header/footer belong to the CMS.
+   Hooks are data-vfe-* attributes so they can't collide with theme/Bootstrap JS. */
+(function () {
+  'use strict';
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var EDGE = 8; // px tolerance for sub-pixel snap positions
+  var NUDGE = 32; // px left before the end of a carousel that still counts as "at the end"
+
+  function each(list, fn) {
+    Array.prototype.forEach.call(list, fn);
+  }
+
+  // Dots are only rendered when there is something to paginate
+  function renderDots(container, count, onClick) {
+    if (!container) return [];
+    container.innerHTML = '';
+    container.hidden = count < 2;
+    var dots = [];
+    for (var i = 0; i < count && count > 1; i++) {
+      var dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'vfe-dots__dot';
+      dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      dot.addEventListener('click', onClick.bind(null, i));
+      container.appendChild(dot);
+      dots.push(dot);
+    }
+    return dots;
+  }
+
+  /* ---------- Fade slider ([data-vfe-fader]) ----------
+     Every element with data-vfe-fade-slide="n" belongs to slide n, so the text
+     and the image of one slide may live in different containers. */
+  function initFader(root) {
+    var slides = root.querySelectorAll('[data-vfe-fade-slide]');
+    var count = 0;
+    each(slides, function (el) { count = Math.max(count, Number(el.dataset.vfeFadeSlide) + 1); });
+    if (!count) return;
+
+    var current = 0;
+    var dots = renderDots(root.querySelector('[data-vfe-fade-dots]'), count, go);
+    var prevs = root.querySelectorAll('[data-vfe-fade-prev]');
+    var nexts = root.querySelectorAll('[data-vfe-fade-next]');
+    var loop = root.hasAttribute('data-vfe-fade-loop');
+
+    function go(index) {
+      current = loop ? (index + count) % count : Math.max(0, Math.min(count - 1, index));
+      each(slides, function (el) {
+        var active = Number(el.dataset.vfeFadeSlide) === current;
+        el.classList.toggle('is-active', active);
+        el.setAttribute('aria-hidden', String(!active));
+      });
+      dots.forEach(function (dot, i) { dot.classList.toggle('is-active', i === current); });
+      if (!loop) {
+        each(prevs, function (b) { b.disabled = current === 0; });
+        each(nexts, function (b) { b.disabled = current === count - 1; });
+      }
+    }
+
+    each(prevs, function (b) { b.addEventListener('click', function () { go(current - 1); }); });
+    each(nexts, function (b) { b.addEventListener('click', function () { go(current + 1); }); });
+
+    // Swipe on touch devices
+    var startX = null;
+    root.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
+    root.addEventListener('touchend', function (e) {
+      if (startX === null) return;
+      var dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) go(current + (dx < 0 ? 1 : -1));
+      startX = null;
+    });
+
+    go(0);
+  }
+
+  /* ---------- Scroll-snap carousels ([data-vfe-carousel]) ---------- */
+  function initCarousel(root) {
+    var track = root.querySelector('[data-vfe-carousel-track]');
+    if (!track) return null;
+
+    var prevs = root.querySelectorAll('[data-vfe-carousel-prev]');
+    var nexts = root.querySelectorAll('[data-vfe-carousel-next]');
+    var dotsBox = root.querySelector('[data-vfe-carousel-dots]');
+    var start = Number(root.dataset.vfeCarouselStart || 0);
+    var dots = [];
+
+    function slides() {
+      return Array.prototype.filter.call(track.children, function (el) { return !el.hidden; });
+    }
+
+    function step() {
+      var items = slides();
+      if (items.length < 2) return track.clientWidth;
+      return items[1].offsetLeft - items[0].offsetLeft;
+    }
+
+    function index() {
+      var max = track.scrollWidth - track.clientWidth;
+      if (max > EDGE && track.scrollLeft >= max - EDGE) return slides().length - 1;
+      return Math.round(track.scrollLeft / step());
+    }
+
+    function scrollToIndex(i, instant) {
+      // 'instant' (not 'auto') so CSS scroll-behavior: smooth doesn't animate it
+      track.scrollTo({ left: i * step(), behavior: instant || reduceMotion ? 'instant' : 'smooth' });
+    }
+
+    function update() {
+      var max = track.scrollWidth - track.clientWidth;
+      each(prevs, function (b) { b.disabled = track.scrollLeft <= EDGE; });
+      // A few px left (track padding): a click would only nudge the track, so treat it as the end
+      each(nexts, function (b) { b.disabled = track.scrollLeft >= max - NUDGE; });
+      var current = index();
+      dots.forEach(function (dot, i) { dot.classList.toggle('is-active', i === current); });
+    }
+
+    function refresh(startIndex) {
+      dots = renderDots(dotsBox, slides().length, scrollToIndex);
+      track.scrollLeft = 0;
+      if (startIndex) scrollToIndex(startIndex, true);
+      update();
+    }
+
+    // Arrows go to the nearest snap point at least half a card away. index() can't be used:
+    // at the end of the track it returns the last slide, whose snap point may sit only a few
+    // px before the end, so "previous" would barely move.
+    function move(dir) {
+      var s = step();
+      var target = dir < 0 ? Math.floor((track.scrollLeft - s / 2) / s) : Math.ceil((track.scrollLeft + s / 2) / s);
+      scrollToIndex(Math.max(0, Math.min(target, slides().length - 1)));
+    }
+
+    each(prevs, function (b) { b.addEventListener('click', function () { move(-1); }); });
+    each(nexts, function (b) { b.addEventListener('click', function () { move(1); }); });
+
+    var ticking = false;
+    track.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () { update(); ticking = false; });
+    }, { passive: true });
+    window.addEventListener('resize', update);
+
+    enableMouseDrag(track, scrollToIndex, index);
+    refresh(start);
+    return { refresh: refresh };
+  }
+
+  // Lets desktop mouse users drag carousels (some have no arrows on desktop)
+  function enableMouseDrag(track, scrollToIndex, index) {
+    var startX = 0;
+    var startScroll = 0;
+    var dragging = false;
+    var moved = false;
+
+    track.addEventListener('pointerdown', function (e) {
+      if (e.pointerType !== 'mouse' || e.button !== 0) return;
+      if (track.scrollWidth <= track.clientWidth) return;
+      dragging = true;
+      moved = false;
+      startX = e.clientX;
+      startScroll = track.scrollLeft;
+    });
+
+    window.addEventListener('pointermove', function (e) {
+      if (!dragging) return;
+      var dx = e.clientX - startX;
+      if (!moved && Math.abs(dx) < 5) return;
+      if (!moved) {
+        moved = true;
+        track.classList.add('is-dragging');
+      }
+      track.scrollLeft = startScroll - dx;
+    });
+
+    window.addEventListener('pointerup', function () {
+      if (!dragging) return;
+      dragging = false;
+      if (!moved) return;
+      track.classList.remove('is-dragging');
+      scrollToIndex(index());
+    });
+
+    // Swallow the click that ends a drag so links/buttons don't fire
+    track.addEventListener('click', function (e) {
+      if (!moved) return;
+      e.preventDefault();
+      e.stopPropagation();
+      moved = false;
+    }, true);
+    track.addEventListener('dragstart', function (e) { e.preventDefault(); });
+  }
+
+  /* ---------- EB12 / EB8 switcher ([data-vfe-model-switch]) ---------- */
+  function initModelSwitch(scope, carousels) {
+    each(scope.querySelectorAll('[data-vfe-model-switch]'), function (section) {
+      var tabs = section.querySelectorAll('[data-vfe-model-tab]');
+      var carouselRoot = section.querySelector('[data-vfe-carousel]');
+
+      function select(model) {
+        each(tabs, function (tab) {
+          tab.setAttribute('aria-selected', String(tab.dataset.vfeModelTab === model));
+        });
+        each(section.querySelectorAll('[data-vfe-model]'), function (el) {
+          el.hidden = el.dataset.vfeModel !== model;
+        });
+        var carousel = carousels.get(carouselRoot);
+        if (carousel) carousel.refresh();
+      }
+
+      each(tabs, function (tab) {
+        tab.addEventListener('click', function () { select(tab.dataset.vfeModelTab); });
+      });
+    });
+  }
+
+  function init() {
+    var scope = document.getElementById('vf-ebus-scope');
+    if (!scope) return;
+
+    each(scope.querySelectorAll('[data-vfe-fader]'), initFader);
+
+    var carousels = new Map();
+    each(scope.querySelectorAll('[data-vfe-carousel]'), function (root) {
+      carousels.set(root, initCarousel(root));
+    });
+
+    initModelSwitch(scope, carousels);
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
